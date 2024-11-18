@@ -27,7 +27,8 @@ function reliableMultiply(a, b) {
 // Log the error and attempt again
 console.log(e.message); // Optional: Display error message
     }
-  ]
+  
 }
 // Test the reliableMultiply function
 console.log(reliableMultiply(8, 8)); // should output 64
+}
