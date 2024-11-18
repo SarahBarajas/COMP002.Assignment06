@@ -5,17 +5,22 @@
 // handle only the exceptions you are trying to handle.
 // Example Output:
 // console.log(reliableMultiply(8, 8)); // outputs 64
-
+// custom error class
 class MultiplicatorUnitFailure extends Error {}
-
+// Function that multiplies or throws an error at random
 function primitiveMultiply(a, b) {
   if (Math.random() < 0.2) {
     return a * b;
   } else {
-    throw new MultiplicatorUnitFailure("Klunk");
+    throw new MultiplicatorUnitFailure("Klunk");// 80% failure rate
   }
 }
-
-function reliableMultiply(a, b) {
-  // Your code here.
+// Function that keeps attempting to multiply until it succeeds
+function reliableMultiply(a, b) { 
+  while (true) { // Keep trying 
+    try {  
+      return primitiveMultiply(a, b); // Try the multiplication
+    } catch (e) {
+      if (!(e instanceof MultiplicatorUnitFailure)) { // Check if the error is expected
+        throw e; // If it's a different error, throw it
 }
